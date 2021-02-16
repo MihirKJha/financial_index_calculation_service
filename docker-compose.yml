@@ -1,0 +1,49 @@
+version: '3'
+
+services:
+  distro:
+    image: alpine
+    container_name: Alpine_Distro
+    restart: always
+    entrypoint: tail -f /dev/null
+
+  financial-index-db:
+    container_name: financial-index-db
+    image: mariadb:10.3
+    restart: always
+    volumes:
+      - ./docker/mariadb/data:/var/lib/mysql:rw
+      - ./database/init.sql:/docker-entrypoint-initdb.d/schema.sql:ro
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=user
+      - MYSQL_ROOT_PASSWORD=root 
+      - MYSQL_DATABASE=db
+      
+  exchange_rate-application:
+    container_name: financial-index-calculation-app
+    build:
+      context: ../financial_index_calculation_service
+      dockerfile: ./Dockerfile
+    image: financial-index-calculation-app:latest
+    restart: always
+    expose:
+      - 8081
+    ports:
+      - "8081:8081"
+    depends_on:
+      - financial-index-db
+    volumes:
+      - /var/log:/log  
+    links:
+      - financial-index-db:db
+      - distro  
+    environment:
+      - PERIOD=300
+      - PERIOD_TYPE=SECONDS 
+     
+volumes:
+  data:
+    external: true

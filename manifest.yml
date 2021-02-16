@@ -1,0 +1,11 @@
+applications:
+- name: financial_index_calculation_service
+  disk_quota: 256M
+  instances: 1
+  memory: 256M
+  path: /target/financial_index_calculation_service-0.0.1-SNAPSHOT.jar
+  timeout: 120
+  routes:
+  - route: corp.com
+services:
+- financial_index_calculation_service-cups
