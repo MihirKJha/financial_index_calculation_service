@@ -39,7 +39,7 @@ INSTRUMENT_MEDIAN_INDEX to keep all instrument index calculation
 
 Use below endpoints
 
-[API-1]POST -  http://localhost:8081/ticks 
+[API-1] POST -  http://localhost:8081/ticks 
 
 Request Body :- 
 		{
@@ -70,5 +70,5 @@ To make Statistics API contant time I did all calculation while saving ticks  wi
 
 Improvements
 -----------------------------
-Code coverage and improving design part
-Jenkins PCF integrations 
+1. Code coverage and improving design
+2. Jenkins PCF integrations 
