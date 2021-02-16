@@ -70,5 +70,5 @@ To make Statistics API contant time I did all calculation while saving ticks  wi
 
 Improvements
 -----------------------------
-Code coverage and improving design part
-Jenkins PCF integrations 
+1. Code coverage and improving design
+2. Jenkins PCF integrations 
