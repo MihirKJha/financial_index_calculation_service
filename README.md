@@ -39,7 +39,7 @@ INSTRUMENT_MEDIAN_INDEX to keep all instrument index calculation
 
 Use below endpoints
 
-[API-1]POST -  http://localhost:8081/ticks 
+[API-1] POST -  http://localhost:8081/ticks 
 
 Request Body :- 
 		{
